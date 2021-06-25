@@ -4,11 +4,11 @@ const util = require('util');
 
 const execAsync = util.promisify(require('child_process').exec);
 
-const backupPath = path.join(__dirname, '..', 'backups');
+const backupPath = path.join(__dirname, '..', 'backups', ).replace(/\\/g, '/');
 
 router.get('/backup', async (req, res, next) => {
   try {
-    const result = await execAsync(`cd /; mongodump --config=C:/Users/Illia/Desktop/dbcw/dump_config.yaml --out ${backupPath}`);
+    const result = await execAsync(`D:/MongoDB/Server/4.4/bin/mongodump --out C:/Users/Illia/Desktop/dbcw/backups`);
     res.json({ result: result.stderr.replace(/\t/g, '  ').split('\n').filter((el) => el) });
   } catch (err) {
     next(err);
@@ -17,7 +17,7 @@ router.get('/backup', async (req, res, next) => {
 
 router.get('/restore', async (req, res, next) => {
   try {
-    const result = await execAsync(`cd /; mongorestore -d test  ${backupPath}/test --config=C:/Users/Illia/Desktop/dbcw/dump_config.yaml`);
+    const result = await execAsync(`D:/MongoDB/Server/4.4/bin/mongorestore C:/Users/Illia/Desktop/dbcw/backups`);
     res.json({ result: result.stderr.replace(/\t/g, '  ').split('\n').filter((el) => el) });
   } catch (err) {
     next(err);

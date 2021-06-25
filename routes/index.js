@@ -6,7 +6,7 @@ const movies = require('./movies');
 
 const backup = require('./backup');
 
-router.use('/backup', backup);
+router.use('/', backup);
 router.use('/movies', movies);
 router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
