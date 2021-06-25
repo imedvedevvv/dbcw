@@ -1,0 +1,9 @@
+.env
+db
+node_modules
+
+sharding
+backups
+replication
+
+dump_config.yaml

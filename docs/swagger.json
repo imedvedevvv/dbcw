@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Movies API"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "Development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Backup"
+    },
+    {
+      "name": "Movie"
+    }
+  ],
+  "paths": {
+    "/backup": {
+      "get": {
+        "tags": ["Backup"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/restore": {
+      "get": {
+        "tags": ["Backup"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/movies/{title}": {
+      "get": {
+        "tags": ["Movie"],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Title is required"
+          }
+        }
+      }
+    },
+    "/movies/stats": {
+      "get": {
+        "tags": ["Movie"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/movies/charts": {
+        "get": {
+          "tags": ["Movie"],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+  }
+}
